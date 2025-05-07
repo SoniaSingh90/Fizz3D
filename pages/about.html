@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Fizz3D</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <!-- Initial theme script to avoid flashing -->
+    <script>
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.classList.add(savedTheme + '-mode');
+        document.body.classList.add(savedTheme + '-mode');
+    </script>
+</head>
+<body>
+    <!-- Header will be injected here -->
+    <div id="header-placeholder"></div>
+
+    <main>
+        <!-- About Section -->
+        <section class="py-5">
+            <div class="container">
+                <!-- Introduction -->
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <h1 class="mb-4">About Fizz3D</h1>
+                        <p class="lead">A mobile-first, responsive web application showcasing interactive 3D beverage models, developed as part of the Mobile Web 3D Applications module at the University of Sussex.</p>
+                        <hr>
+                    </div>
+                </div>
+
+                <!-- Project Overview -->
+                <div class="row mb-5">
+                    <div class="col-md-6">
+                        <h2>Project Overview</h2>
+                        <p>Fizz3D is an interactive web application that brings beverage products to life through 3D visualization. Using modern web technologies, we've created an immersive experience that works seamlessly across all devices.</p>
+                        <div class="card mt-4">
+                            <div class="card-body">
+                                <h5 class="card-title">Key Objectives</h5>
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-check-circle text-success me-2"></i>Real-time 3D rendering via the browser</li>
+                                    <li><i class="fas fa-check-circle text-success me-2"></i>Web-based interactivity using HTML, JavaScript, and X3D</li>
+                                    <li><i class="fas fa-check-circle text-success me-2"></i>Practical application of skills learned through structured labs</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card h-100">
+                            <img src="../assets/images/about/app-screenshot-placeholder.jpg" class="card-img-top" alt="Fizz3D Application Screenshot">
+                            <div class="card-body">
+                                <h5 class="card-title">Interactive 3D Experience</h5>
+                                <p class="card-text">Experience our beverage models in stunning 3D with interactive controls for rotation, camera angles, and animations.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technologies Used -->
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <h2>Technologies Used</h2>
+                        <div class="row mt-4">
+                            <div class="col-md-4 mb-4">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><i class="fas fa-cube me-2"></i>3D Technologies</h5>
+                                        <ul class="list-unstyled">
+                                            <li><strong>Blender</strong> – 3D modeling and animation</li>
+                                            <li><strong>Three.js</strong> – GLTF model rendering</li>
+                                            <li><strong>X3DOM</strong> – X3D model integration</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><i class="fas fa-code me-2"></i>Web Technologies</h5>
+                                        <ul class="list-unstyled">
+                                            <li><strong>HTML5 & CSS3</strong> – Structure and styling</li>
+                                            <li><strong>JavaScript</strong> – Interactivity and animations</li>
+                                            <li><strong>PHP & AJAX</strong> – Dynamic content loading</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><i class="fas fa-paint-brush me-2"></i>UI Framework</h5>
+                                        <ul class="list-unstyled">
+                                            <li><strong>Bootstrap 5</strong> – Responsive layout</li>
+                                            <li><strong>Font Awesome</strong> – Icon system</li>
+                                            <li><strong>Custom CSS</strong> – Theme and animations</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Educational Context -->
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <h2>Educational Context</h2>
+                        <p>This project was developed progressively through structured lab work in the Mobile Web 3D Applications module:</p>
+                        <div class="row mt-4">
+                            <div class="col-md-3 mb-4">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Lab 0</h5>
+                                        <p class="card-text">Folder structure & coding environment setup</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-4">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Lab 3</h5>
+                                        <p class="card-text">Exporting models and integrating VRML/X3D</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-4">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Lab 4</h5>
+                                        <p class="card-text">Static 3D App with multi-page layout</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-4">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Lab 5</h5>
+                                        <p class="card-text">Converting to SPA, integrating interactivity</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mt-4"><em>Course guided by Dr Daniel Creed & Dr Imran Khan.</em></p>
+                    </div>
+                </div>
+
+                <!-- Key Features -->
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <h2>Key Features</h2>
+                        <div class="row mt-4">
+                            <div class="col-md-6 mb-4">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><i class="fas fa-cube me-2"></i>3D Features</h5>
+                                        <ul class="list-unstyled">
+                                            <li><i class="fas fa-check text-success me-2"></i>Interactive 3D product visualization</li>
+                                            <li><i class="fas fa-check text-success me-2"></i>Camera view controls</li>
+                                            <li><i class="fas fa-check text-success me-2"></i>Model animation controls</li>
+                                            <li><i class="fas fa-check text-success me-2"></i>Texture switching</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><i class="fas fa-laptop-code me-2"></i>Technical Features</h5>
+                                        <ul class="list-unstyled">
+                                            <li><i class="fas fa-check text-success me-2"></i>Single Page Application structure</li>
+                                            <li><i class="fas fa-check text-success me-2"></i>Dynamic content loading</li>
+                                            <li><i class="fas fa-check text-success me-2"></i>Responsive design</li>
+                                            <li><i class="fas fa-check text-success me-2"></i>Theme switching</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Development Showcase -->
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <h2>Development Showcase</h2>
+                        <div class="row mt-4">
+                            <div class="col-md-4 mb-4">
+                                <div class="card">
+                                    <img src="../assets/images/about/blender-model-placeholder.jpg" class="card-img-top" alt="3D model in Blender">
+                                    <div class="card-body">
+                                        <h5 class="card-title">3D Modeling</h5>
+                                        <p class="card-text">Models created and animated in Blender</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <div class="card">
+                                    <img src="../assets/images/about/code-screenshot-placeholder.jpg" class="card-img-top" alt="JavaScript code snippet">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Code Implementation</h5>
+                                        <p class="card-text">JavaScript-based content swapping and interactivity</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <div class="card">
+                                    <img src="../assets/images/about/app-screenshot-placeholder.jpg" class="card-img-top" alt="Live site screenshot">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Final Application</h5>
+                                        <p class="card-text">The complete SPA running in the browser</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Development Experience -->
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <h2>Development Experience</h2>
+                        <div class="card">
+                            <div class="card-body">
+                                <p>This project was developed using Visual Studio Code, leveraging my previous experience in website design. The familiar development environment and past experience significantly contributed to the project's success, allowing for efficient implementation of complex features and better code organization.</p>
+                                <p>The project's development was guided by the structured approach of the Mobile Web 3D Applications module, with invaluable support from our course leaders:</p>
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-user-graduate me-2"></i>Dr Daniel Creed</li>
+                                    <li><i class="fas fa-user-graduate me-2"></i>Dr Imran Khan</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Code References and Attribution -->
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <h2>Code References and Attribution</h2>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Third-Party Code and Libraries</h5>
+                                <ul class="list-unstyled">
+                                    <li class="mb-3">
+                                        <strong>Three.js Implementation</strong>
+                                        <ul>
+                                            <li>OrbitControls: <a href="https://threejs.org/docs/#examples/en/controls/OrbitControls" target="_blank">Three.js Documentation</a></li>
+                                            <li>GLTF Loader: <a href="https://threejs.org/docs/#examples/en/loaders/GLTFLoader" target="_blank">Three.js GLTFLoader</a></li>
+                                            <li>Animation System: <a href="https://threejs.org/examples/?q=gltf#webgl_loader_gltf" target="_blank">Three.js Examples</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="mb-3">
+                                        <strong>Bootstrap Components</strong>
+                                        <ul>
+                                            <li>Responsive Grid: <a href="https://getbootstrap.com/docs/5.3/layout/grid/" target="_blank">Bootstrap Grid System</a></li>
+                                            <li>Navigation: <a href="https://getbootstrap.com/docs/5.3/components/navbar/" target="_blank">Bootstrap Navbar</a></li>
+                                            <li>Cards: <a href="https://getbootstrap.com/docs/5.3/components/card/" target="_blank">Bootstrap Cards</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="mb-3">
+                                        <strong>Custom Implementations</strong>
+                                        <ul>
+                                            <li>Theme Switching: Adapted from <a href="https://www.w3schools.com/howto/howto_js_toggle_dark_mode.asp" target="_blank">W3Schools Dark Mode Tutorial</a></li>
+                                            <li>AJAX Gallery: Based on <a href="https://www.w3schools.com/xml/xml_http.asp" target="_blank">W3Schools AJAX Guide</a></li>
+                                            <li>Content Swapping: Inspired by <a href="https://developer.mozilla.org/en-US/docs/Web/API/History_API" target="_blank">MDN History API</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GitHub Repository -->
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <h2>Source Code Repository</h2>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fab fa-github me-2"></i>GitHub Repository</h5>
+                                <p>The complete source code for this project is available on GitHub:</p>
+                                <a href="https://github.com/sonia/Testcode" class="btn btn-primary" target="_blank">
+                                    <i class="fab fa-github me-2"></i>View on GitHub
+                                </a>
+                                <p class="mt-3">The repository includes:</p>
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-code-branch me-2"></i>Complete source code</li>
+                                    <li><i class="fas fa-book me-2"></i>Documentation</li>
+                                    <li><i class="fas fa-history me-2"></i>Development history</li>
+                                    <li><i class="fas fa-file-alt me-2"></i>README with setup instructions</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Code Screenshots -->
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <h2>Code Implementation Details</h2>
+                        <div class="row mt-4">
+                            <div class="col-md-6 mb-4">
+                                <div class="card">
+                                    <img src="../assets/images/about/model-controller-code.jpg" class="card-img-top" alt="Model Controller Implementation">
+                                    <div class="card-body">
+                                        <h5 class="card-title">3D Model Controller</h5>
+                                        <p class="card-text">Implementation of the Three.js model controller with camera controls and animations</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="card">
+                                    <img src="../assets/images/about/theme-switcher-code.jpg" class="card-img-top" alt="Theme Switcher Implementation">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Theme Switcher</h5>
+                                        <p class="card-text">Custom theme switching implementation with localStorage persistence</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer will be injected here -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="../js/theme-toggle.js"></script>
+    <script src="../js/header-scroll.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html> 

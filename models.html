@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Models - Fizz3D</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Initial theme script to avoid flashing -->
+    <script>
+        // Apply the saved theme before page loads to avoid flash of wrong theme
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.classList.add(savedTheme + '-mode');
+        document.body.classList.add(savedTheme + '-mode');
+    </script>
+</head>
+<body>
+    <!-- Header will be injected here -->
+    <div id="header-placeholder"></div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="container my-5">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1 class="display-4 mb-3">3D Beverage Models</h1>
+                    <p class="lead mb-4">Explore our interactive 3D beverage models with this tabbed interface. Switch between different drinks to view them in stunning detail.</p>
+                    <hr class="my-4">
+                </div>
+            </div>
+        </section>
+
+        <!-- Tabbed Model Viewer Section -->
+        <section class="container mb-5">
+            <!-- Model Navigation Tabs -->
+            <div class="model-tabs d-flex">
+                <button class="model-tab-btn active" data-model="coke">
+                    <span class="brand-icon coke"></span>Coca-Cola
+                </button>
+                <button class="model-tab-btn" data-model="sprite">
+                    <span class="brand-icon sprite"></span>Sprite
+                </button>
+                <button class="model-tab-btn" data-model="drpepper">
+                    <span class="brand-icon drpepper"></span>Dr Pepper
+                </button>
+            </div>
+            
+            <!-- Model Content -->
+            <div class="card">
+                <div class="card-body p-4">
+                    <div class="row">
+                        <div class="col-lg-6 mb-4 mb-lg-0">
+                            <!-- 3D Model Container (Single) -->
+                            <div id="model-container" class="model-container">
+                                <!-- Three.js will render here -->
+                                <div class="model-loader">
+                                    <div class="spinner-border text-light" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Lighting GUI Button -->
+                                <button id="lighting-gui-btn" class="btn btn-sm btn-info lighting-gui-btn" title="Lighting Controls">
+                                    <i class="fas fa-lightbulb"></i>
+                                </button>
+                                
+                                <!-- Fullscreen Button -->
+                                <button id="fullscreen-btn" class="btn btn-sm btn-secondary fullscreen-toggle" title="Toggle Fullscreen">
+                                    <i class="fas fa-expand"></i>
+                                </button>
+                            </div>
+                            
+                            <!-- Replace with restructured button layout matching the drawing -->
+                            <div class="model-interaction-panel mt-3">
+                                <!-- Top Row: Main Function Buttons side by side -->
+                                <div class="function-row mb-3">
+                                    <div class="row g-2">
+                                        <div class="col-4">
+                                            <button class="btn btn-light w-100 interaction-btn" id="wireframe-toggle">
+                                                <i class="fas fa-wind"></i> Wireframe View
+                                            </button>
+                                        </div>
+                                        <div class="col-4">
+                                            <button class="btn btn-light w-100 interaction-btn" id="rotation-toggle">
+                                                <i class="fas fa-sync-alt"></i> Start Rotation
+                                            </button>
+                                        </div>
+                                        <div class="col-4">
+                                            <button class="btn btn-light w-100 interaction-btn" id="reset-all">
+                                                <i class="fas fa-redo-alt"></i> Reset
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Rotation Speed Slider -->
+                                <div class="speed-control mb-3">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="small text-muted me-2" style="min-width: 100px;">Rotation Speed</span>
+                                        <input type="range" class="form-range" id="rotation-speed-slider" min="0" max="100" value="50">
+                                    </div>
+                                </div>
+                                
+                                <!-- Lighting Controls -->
+                                <div class="lighting-controls mb-3">
+                                    <!-- Light Type Dropdown -->
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <span class="small text-muted me-2" style="min-width: 100px;">Light</span>
+                                        <select id="bottom-lighting-environment" class="form-select form-select-sm">
+                                            <option value="studio">Studio Light</option>
+                                            <option value="outdoor">Outdoor Light</option>
+                                            <option value="warehouse">Warehouse Light</option>
+                                            <option value="sunset">Sunset Light</option>
+                                            <option value="night">Night Light</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <!-- Lighting Intensity Slider -->
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="small text-muted me-2" style="min-width: 100px;">Light Intensity</span>
+                                        <input type="range" class="form-range" id="lighting-intensity-slider" min="0" max="100" value="50">
+                                    </div>
+                                </div>
+                                
+                                <!-- Background Color Controls -->
+                                <div class="background-controls mb-3">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <span class="small text-muted me-2" style="min-width: 100px;">Background</span>
+                                        <div class="d-flex" style="flex: 1;">
+                                            <div class="color-quick-select d-flex gap-2" style="flex: 1;">
+                                                <div class="color-swatch" style="background-color: #0192da; flex: 1; border: 1px solid #0078b8;" data-color="#0192da" title="Fizz Blue"></div>
+                                                <div class="color-swatch" style="background-color: #f0f0f0; flex: 1; border: 1px solid #ccc;" data-color="#f0f0f0" title="Light Gray"></div>
+                                                <div class="color-swatch" style="background-color: #111111; flex: 1;" data-color="#111111" title="Dark"></div>
+                                                <div class="color-swatch transparent" style="flex: 1;" data-color="transparent" title="Transparent"></div>
+                                                <div class="color-picker-container" style="flex: 1; position: relative;" title="Pick custom color">
+                                                    <input type="color" id="dynamic-bg-color" class="form-control form-control-color" value="#0192da">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Camera Angles Row -->
+                                <div class="camera-control-buttons mb-3">
+                                    <div class="row g-2">
+                                        <div class="col-3">
+                                            <button class="btn btn-primary w-100 camera-angle-btn active" data-view="front">
+                                                Front
+                                            </button>
+                                        </div>
+                                        <div class="col-3">
+                                            <button class="btn btn-light w-100 camera-angle-btn" data-view="top">
+                                                Top
+                                            </button>
+                                        </div>
+                                        <div class="col-3">
+                                            <button class="btn btn-light w-100 camera-angle-btn" data-view="side">
+                                                Side
+                                            </button>
+                                        </div>
+                                        <div class="col-3">
+                                            <button class="btn btn-light w-100 camera-angle-btn" data-view="isometric">
+                                                3D
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Animation Buttons Row -->
+                                <div class="animation-control-buttons">
+                                    <div class="row g-2">
+                                        <div class="col-6">
+                                            <button class="btn btn-success w-100" id="open-can-btn">
+                                                <i class="fas fa-play"></i> Open Can
+                                            </button>
+                                        </div>
+                                        <div class="col-6">
+                                            <button class="btn btn-danger w-100" id="crush-can-btn" disabled>
+                                                <i class="fas fa-trash-alt"></i> Crush Can
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-6">
+                            <!-- Dynamic Model Information -->
+                            <h2 id="model-title">Coca-Cola</h2>
+                            <p id="model-description" class="lead">The iconic Coca-Cola can, recognized worldwide for its distinctive red design.</p>
+                            
+                            <h3 class="h5 mt-4 features">Features</h3>
+                            <ul id="model-features" class="card-text">
+                                <!-- Features will be populated by JavaScript -->
+                            </ul>
+                            
+                            <p class="mt-4 model-info">Explore this 3D model by using the controls to rotate, zoom, and view from different angles. Switch between tabs to view different beverage models.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer will be injected here -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Three.js Library and Extensions -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/controls/OrbitControls.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="js/theme-toggle.js"></script>
+    <script src="js/header-scroll.js"></script>
+    <script src="js/model-controller.js"></script>
+    <script src="js/model-switcher.js"></script>
+    <script src="js/model-interactions.js"></script>
+    <script>
+        // Force sidebar to be hidden initially
+        document.addEventListener('DOMContentLoaded', function() {
+            // Immediately hide sidebar
+            const sidebar = document.querySelector('.sidebar-controls');
+            const toggleBtn = document.getElementById('toggle-sidebar-btn');
+            if (sidebar) {
+                sidebar.style.transform = 'translateX(100%)';
+            }
+            if (toggleBtn) {
+                toggleBtn.style.transform = 'translateX(-50px)';
+                toggleBtn.style.right = '0';
+                const icon = toggleBtn.querySelector('i');
+                if (icon) {
+                    icon.classList.remove('fa-chevron-left');
+                    icon.classList.add('fa-sliders-h');
+                }
+            }
+            
+            // Load header and footer
+            fetch('partials/header.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('header-placeholder').innerHTML = data;
+                    
+                    // Initialize theme toggle after header is loaded
+                    if (typeof initThemeToggle === 'function') {
+                        initThemeToggle();
+                    }
+                    
+                    // Initialize header scroll after header is loaded
+                    if (typeof HeaderScroll !== 'undefined') {
+                        const headerScroll = new HeaderScroll();
+                        headerScroll.init();
+                    }
+                })
+                .catch(error => console.error('Error loading header:', error));
+                
+            fetch('partials/footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-placeholder').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading footer:', error));
+                
+            // Initialize the model switcher
+            const modelSwitcher = new ModelSwitcher('model-container');
+            window.modelSwitcher = modelSwitcher; // Make it globally accessible
+            modelSwitcher.init();
+        });
+    </script>
+</body>
+</html> 

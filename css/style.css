@@ -1,0 +1,3080 @@
+/**
+ * style.css
+ * Custom styles for Fizz3D website
+ */
+
+/* Fonts */
+@font-face {
+    font-family: 'Loki Cola';
+    src: url('../fonts/LokiCola.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    --primary-color: #760003;
+    --primary-color-bright: #ff0000;
+    --secondary-color: #00a74a;
+    --accent-color: #0085c7;
+    --light-bg: #f8f9fa;
+    --dark-bg: #222222;
+    --light-text: #212529;
+    --dark-text: #f0f0f0;
+    --light-card-bg: #ffffff;
+    --dark-card-bg: #333333;
+    --light-card-border: #dee2e6;
+    --dark-card-border: #444444;
+    --border-radius: 8px;
+    --transition-speed: 0.3s;
+    --header-height: 60px;
+    --header-transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+}
+
+main {
+    flex: 1;
+}
+
+/* Hero section styles */
+.hero-section {
+    position: relative;
+    background-color: #000;
+    color: #fff;
+    padding: 0;
+    margin-bottom: 3rem;
+    overflow: hidden;
+    height: 100vh;
+    max-height: 800px;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.8;
+    z-index: 0;
+}
+
+.hero-background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(118, 0, 3, 0.7) 0%, rgba(0, 0, 0, 0.7) 100%);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+    font-family: 'Loki Cola', 'Oswald', sans-serif;
+    letter-spacing: 1px;
+}
+
+.hero-content p {
+    font-size: 1.35rem;
+    max-width: 800px;
+    margin: 0 auto 2.5rem;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.7);
+    line-height: 1.6;
+}
+
+.cta-container {
+    margin-bottom: 3.5rem;
+    position: relative;
+    z-index: 5;
+}
+
+.hero-content .btn {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    font-weight: 600;
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    border-radius: 50px;
+    position: relative;
+    z-index: 10;
+    background-color: #1976D2;
+    border-color: #1976D2;
+    color: white;
+    text-transform: none;
+    letter-spacing: 0.5px;
+}
+
+.hero-content .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    background-color: #1565C0;
+    border-color: #1565C0;
+}
+
+.hero-content .btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Dark mode for hero */
+body.dark-mode .hero-background::after {
+    background: linear-gradient(135deg, rgba(255, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.8) 100%);
+}
+
+body.dark-mode .hero-content h1 {
+    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.8);
+    color: #fff;
+}
+
+body.dark-mode .hero-content p {
+    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.8);
+    color: #eee;
+}
+
+body.dark-mode .hero-content .btn {
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 2s infinite;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.5rem;
+    cursor: pointer;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    z-index: 3;
+}
+
+.scroll-indicator:hover {
+    color: #fff;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0) translateX(-50%);
+    }
+    40% {
+        transform: translateY(-15px) translateX(-50%);
+    }
+    60% {
+        transform: translateY(-7px) translateX(-50%);
+    }
+}
+
+body.dark-mode .scroll-indicator {
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+}
+
+body.dark-mode .scroll-indicator:hover {
+    color: #fff;
+    text-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+}
+
+/* Responsive stuff */
+@media (max-width: 991.98px) {
+    .hero-section {
+        height: 90vh;
+        min-height: 550px;
+    }
+    .hero-content h1 {
+        font-size: 3.5rem;
+    }
+    .hero-content p {
+        font-size: 1.25rem;
+    }
+    .hero-content .btn {
+        padding: 0.9rem 2.2rem;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .hero-section {
+        height: 80vh;
+        min-height: 500px;
+    }
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+    .hero-content p {
+        font-size: 1.15rem;
+        padding: 0 1rem;
+    }
+    .hero-content .btn {
+        padding: 0.8rem 2rem;
+        font-size: 1.05rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .hero-section {
+        height: 75vh;
+        min-height: 450px;
+    }
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    .hero-content p {
+        font-size: 1rem;
+        padding: 0 0.5rem;
+        margin-bottom: 2rem;
+    }
+    .hero-content .btn {
+        padding: 0.75rem 1.8rem;
+        font-size: 1rem;
+    }
+    .scroll-indicator {
+        bottom: 20px;
+    }
+}
+
+body.light-mode {
+    background-color: var(--light-bg);
+    color: var(--light-text);
+}
+
+body.dark-mode {
+    background-color: #121212;
+    color: #f0f0f0;
+}
+
+/* Header styles */
+body.light-mode .navbar {
+    background-color: var(--light-card-bg) !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+body.dark-mode .navbar {
+    background-color: var(--dark-card-bg) !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+header.scroll-aware {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1030;
+    transition: transform var(--header-transition);
+    height: var(--header-height);
+}
+header.header-hidden {
+    transform: translateY(-100%);
+}
+
+body:has(header.scroll-aware) {
+    padding-top: var(--header-height);
+}
+
+@supports not (selector(:has(header.scroll-aware))) {
+    body {
+        padding-top: var(--header-height);
+    }
+}
+
+body.dark-mode .navbar-light .navbar-nav .nav-link,
+body.dark-mode .navbar-light .navbar-brand,
+body.dark-mode .dropdown-menu,
+body.dark-mode .dropdown-item {
+    color: var(--dark-text);
+}
+
+body.dark-mode .dropdown-menu {
+    background-color: var(--dark-card-bg);
+    border-color: var(--dark-card-border);
+}
+body.dark-mode .dropdown-item:hover {
+    background-color: #444;
+}
+
+body.light-mode .navbar-toggler {
+    background-color: rgba(0, 0, 0, 0.03);
+    border-color: rgba(0, 0, 0, 0.15);
+    padding: 0.5rem;
+    transition: background-color 0.2s ease;
+}
+body.light-mode .navbar-toggler:hover {
+    background-color: rgba(0, 0, 0, 0.06);
+    border-color: rgba(0, 0, 0, 0.2);
+}
+body.light-mode .navbar-toggler:focus {
+    box-shadow: 0 0 0 0.2rem rgba(118, 0, 3, 0.15);
+    outline: none;
+}
+
+body.dark-mode .navbar-toggler {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+    padding: 0.5rem;
+    transition: background-color 0.2s ease;
+}
+
+body.dark-mode .navbar-toggler:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+body.dark-mode .navbar-toggler:focus {
+    box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.25);
+    outline: none;
+}
+
+body.dark-mode .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Only apply these navbar-collapse styles in mobile view */
+@media (max-width: 991.98px) {
+    body.dark-mode .navbar-collapse {
+        background-color: var(--dark-card-bg);
+        border-radius: 0 0 var(--border-radius) var(--border-radius);
+        padding: 0.5rem;
+        margin-top: 0.5rem;
+    }
+    
+    body.light-mode .navbar-collapse {
+        background-color: var(--light-card-bg);
+        border: 1px solid var(--light-card-border);
+        padding: 0.5rem;
+        margin-top: 0.5rem;
+        border-radius: var(--border-radius);
+    }
+    
+    /* Mobile navigation improvements */
+    .navbar-collapse {
+        max-height: calc(100vh - var(--header-height) - 20px);
+        overflow-y: auto;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        padding: 0.75rem;
+    }
+    
+    body.dark-mode .navbar-collapse {
+        background-color: #282828;
+        border: 1px solid #444;
+    }
+    
+    /* Dropdown menu in mobile view */
+    .dropdown-menu {
+        border: none;
+        background-color: transparent;
+        padding: 0.5rem 0 0.5rem 1.5rem;
+        box-shadow: none;
+        margin: 0.25rem 0;
+        width: 100%;
+    }
+    
+    .navbar-nav .nav-link {
+        padding: 0.75rem 1rem;
+        border-radius: var(--border-radius);
+    }
+    
+    body.light-mode .dropdown-menu {
+        background-color: rgba(0, 0, 0, 0.03);
+        padding: 0.5rem 0.75rem 0.5rem 1.5rem;
+        border-left: 3px solid rgba(0, 0, 0, 0.08);
+        margin-left: 0.5rem;
+        border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    }
+    
+    body.dark-mode .dropdown-menu {
+        background-color: rgba(255, 255, 255, 0.05);
+        padding: 0.5rem 0.75rem 0.5rem 1.5rem;
+        border-left: 3px solid rgba(255, 255, 255, 0.08);
+        margin-left: 0.5rem;
+        border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    }
+}
+
+/* Improved dropdown items for mobile */
+@media (max-width: 991.98px) {
+    .dropdown-item {
+        padding: 0.75rem 1rem;
+        border-radius: var(--border-radius);
+        margin: 0.25rem 0;
+    }
+    
+    body.light-mode .dropdown-item:hover,
+    body.light-mode .dropdown-item:focus {
+        background-color: rgba(0, 0, 0, 0.06);
+    }
+    
+    body.dark-mode .dropdown-item:hover,
+    body.dark-mode .dropdown-item:focus {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+}
+
+.logo-text {
+    font-family: 'Loki Cola', 'Oswald', sans-serif;
+    font-size: 2rem;
+    color: var(--primary-color);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Make brand name brighter in dark mode */
+body.dark-mode .logo-text {
+    color: var(--primary-color-bright);
+    text-shadow: 0 0 8px rgba(255,0,0,0.5);
+    font-weight: bold;
+}
+
+/* Theme Toggle Button */
+.theme-toggle-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    transition: all var(--transition-speed) ease;
+    border: 1px solid;
+    font-weight: 500;
+}
+
+body.light-mode .theme-toggle-btn {
+    background-color: var(--light-card-bg);
+    color: #555;
+    border-color: #ddd;
+}
+
+body.light-mode .theme-toggle-btn:hover {
+    background-color: #f0f0f0;
+    color: #333;
+    border-color: #ccc;
+}
+
+body.dark-mode .theme-toggle-btn {
+    background-color: #333;
+    color: #eee;
+    border-color: #555;
+}
+
+body.dark-mode .theme-toggle-btn:hover {
+    background-color: #444;
+    color: #fff;
+    border-color: #666;
+}
+
+.theme-toggle-btn i {
+    transition: all var(--transition-speed) ease;
+}
+
+body.dark-mode .theme-toggle-btn i {
+    color: #ffd700;
+}
+
+/* ========== CARD STYLES ========== */
+/* Light Mode Cards */
+body.light-mode .card {
+    background-color: var(--light-card-bg);
+    border-color: var(--light-card-border);
+}
+
+/* Dark Mode Cards */
+body.dark-mode .card {
+    background-color: #282828;
+    border-color: #444;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+/* Improved card visibility in dark mode */
+body.dark-mode .card-body {
+    background-color: #333;
+}
+
+body.dark-mode .card-title {
+    color: #fff;
+}
+
+body.dark-mode .card-text {
+    color: #ddd;
+}
+
+body.dark-mode ul.card-text li {
+    margin-bottom: 8px;
+}
+
+/* ========== MODEL CONTAINER STYLES ========== */
+.model-container {
+    width: 100%;
+    height: 400px;
+    position: relative;
+    overflow: visible;
+    border-radius: var(--border-radius);
+    margin-bottom: 1rem;
+}
+
+body.light-mode .model-container {
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+body.dark-mode .model-container {
+    background-color: #1a1a1a;
+    border: 1px solid #444;
+}
+
+/* Model loader overlay */
+.model-loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 10;
+    color: white;
+}
+
+.model-loader .spinner-border {
+    width: 3rem;
+    height: 3rem;
+}
+
+/* ========== MODEL CONTROLS ========== */
+.model-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.model-controls .btn {
+    flex: 1;
+    min-width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.model-controls .btn i {
+    margin-right: 5px;
+}
+
+.model-controls .btn.active {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+body.dark-mode .model-controls .btn-outline-primary {
+    color: #f8f9fa;
+    border-color: #606060;
+}
+
+body.dark-mode .model-controls .btn-outline-primary:hover {
+    background-color: rgba(255,255,255,0.1);
+    border-color: var(--primary-color-bright);
+}
+
+body.dark-mode .model-controls .btn-outline-secondary {
+    color: #f8f9fa;
+    border-color: #606060;
+}
+
+body.dark-mode .model-controls .btn-outline-secondary:hover {
+    background-color: rgba(255,255,255,0.1);
+}
+
+body.dark-mode .model-controls .btn-outline-secondary.active {
+    background-color: #444;
+    color: #fff;
+}
+
+/* Camera view controls */
+.camera-controls {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.camera-controls .btn {
+    flex: 1;
+    padding: 0.4rem 0.6rem;
+    font-size: 0.875rem;
+}
+
+/* ========== RANGE SLIDER STYLES ========== */
+/* Speed control container */
+.speed-control {
+    margin: 1.5rem 0;
+}
+
+/* Common styles for range slider */
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 10px;
+    border-radius: 5px;
+    outline: none;
+    margin: 10px 0;
+}
+
+/* Thumb (the draggable dot) styles */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: var(--primary-color-bright);
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid white;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: var(--primary-color-bright);
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid white;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+
+/* Track styles for light mode */
+body.light-mode input[type="range"] {
+    background: #d0d0d0;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
+}
+
+body.light-mode input[type="range"]::-webkit-slider-runnable-track {
+    background: #d0d0d0;
+    height: 10px;
+    border-radius: 5px;
+}
+
+body.light-mode input[type="range"]::-moz-range-track {
+    background: #d0d0d0;
+    height: 10px;
+    border-radius: 5px;
+}
+
+/* Track styles for dark mode */
+body.dark-mode input[type="range"] {
+    background: #444;
+    border: 1px solid #555;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.5);
+}
+
+body.dark-mode input[type="range"]::-webkit-slider-runnable-track {
+    background: #444;
+    height: 10px;
+    border-radius: 5px;
+}
+
+body.dark-mode input[type="range"]::-moz-range-track {
+    background: #444;
+    height: 10px;
+    border-radius: 5px;
+}
+
+/* Focus states */
+input[type="range"]:focus {
+    outline: none;
+}
+
+input[type="range"]:focus::-webkit-slider-runnable-track {
+    background: var(--accent-color);
+}
+
+input[type="range"]:focus::-moz-range-track {
+    background: var(--accent-color);
+}
+
+/* ========== FOOTER STYLES ========== */
+footer {
+    padding: 2rem 0;
+    margin-top: auto;
+}
+
+/* Light Mode Footer */
+body.light-mode footer {
+    background-color: #e9ecef;
+    border-top: 1px solid #dee2e6;
+}
+
+/* Dark Mode Footer */
+body.dark-mode footer {
+    background-color: #2d2d2d;
+    border-top: 1px solid #444;
+}
+
+.footer-brand {
+    font-family: 'Loki Cola', 'Oswald', sans-serif;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+/* Make footer brand brighter in dark mode too */
+body.dark-mode .footer-brand {
+    color: var(--primary-color-bright);
+    text-shadow: 0 0 8px rgba(255,0,0,0.3);
+}
+
+.social-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    margin-right: 10px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    transition: all var(--transition-speed) ease;
+}
+
+body.dark-mode .social-icons a {
+    background-color: var(--primary-color-bright);
+    box-shadow: 0 0 10px rgba(255,0,0,0.3);
+}
+
+.social-icons a:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-3px);
+}
+
+body.dark-mode footer a {
+    color: #ccc;
+}
+
+body.dark-mode footer a:hover {
+    color: #fff;
+}
+
+/* ========== RESPONSIVE ADJUSTMENTS ========== */
+@media (max-width: 991.98px) {
+    .model-container {
+        height: 350px;
+    }
+    
+    .hero-section {
+        padding: 5rem 0;
+    }
+    
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .model-container {
+        height: 300px;
+    }
+    
+    .model-controls {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .model-controls .btn {
+        flex: 1 0 calc(50% - 0.5rem);
+    }
+    
+    .hero-section {
+        padding: 4rem 0;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-content p {
+        font-size: 1.1rem;
+        padding: 0 1rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .model-container {
+        height: 250px;
+    }
+    
+    .model-controls .btn {
+        flex: 1 0 100%;
+    }
+    
+    .camera-controls {
+        flex-wrap: wrap;
+    }
+    
+    .camera-controls .btn {
+        flex: 1 0 calc(50% - 0.25rem);
+    }
+    
+    .hero-section {
+        padding: 3rem 0;
+    }
+    
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+        padding: 0 0.5rem;
+    }
+    
+    .hero-content .btn {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.95rem;
+    }
+}
+
+/* ========== MODEL TABS STYLES ========== */
+/* Tabs container */
+.model-tabs {
+    position: relative;
+    z-index: 1;
+    margin-bottom: -1px;
+}
+
+/* Tab buttons */
+.model-tab-btn {
+    position: relative;
+    padding: 0.75rem 1.5rem;
+    margin-right: 0.5rem;
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+    font-weight: 600;
+    transition: all var(--transition-speed) ease;
+    border: 1px solid transparent;
+    background: transparent;
+    cursor: pointer;
+}
+
+/* Light mode tab styles */
+body.light-mode .model-tab-btn {
+    color: var(--light-text);
+}
+
+body.light-mode .model-tab-btn:hover:not(.active) {
+    background-color: rgba(0,0,0,0.03);
+    border-color: #eee;
+}
+
+body.light-mode .model-tab-btn.active {
+    background-color: var(--light-card-bg);
+    border-color: var(--light-card-border);
+    border-bottom-color: var(--light-card-bg);
+}
+
+/* Dark mode tab styles */
+body.dark-mode .model-tab-btn {
+    color: #ccc;
+}
+
+body.dark-mode .model-tab-btn:hover {
+    background-color: rgba(255,255,255,0.05);
+}
+
+body.dark-mode .model-tab-btn.active {
+    background-color: #333;
+    border-color: #555;
+    border-bottom-color: #333;
+    color: #fff;
+}
+
+/* Brand icon styles */
+.brand-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 8px;
+}
+
+.brand-icon.coke {
+    background-color: #F40009;
+}
+
+.brand-icon.sprite {
+    background-color: #00892d;
+}
+
+.brand-icon.drpepper {
+    background-color: #8b0000;
+}
+
+/* In dark mode, make the icons glow slightly */
+body.dark-mode .brand-icon.coke {
+    box-shadow: 0 0 8px rgba(255,0,0,0.5);
+}
+
+body.dark-mode .brand-icon.sprite {
+    box-shadow: 0 0 8px rgba(0,255,0,0.3);
+}
+
+body.dark-mode .brand-icon.drpepper {
+    box-shadow: 0 0 8px rgba(139,0,0,0.5);
+}
+
+/* ========== PRODUCT CARD STYLES ========== */
+.product-card {
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    overflow: hidden;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Light mode product cards */
+body.light-mode .product-card {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+body.light-mode .product-card:hover {
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+/* Dark mode product cards */
+body.dark-mode .product-card {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    background-color: var(--dark-card-bg);
+    border-color: var(--dark-card-border);
+}
+
+body.dark-mode .product-card:hover {
+    box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+}
+
+/* Product card image styles */
+.card-img-container {
+    overflow: hidden;
+    max-height: 220px;
+}
+
+.product-card img {
+    transition: transform 0.5s ease;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.product-card:hover img {
+    transform: scale(1.05);
+}
+
+/* Card title */
+.product-card .card-title {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+/* Coca-Cola title */
+.product-card:nth-child(1) .card-title::after {
+    content: '';
+    display: block;
+    height: 3px;
+    width: 40px;
+    background-color: var(--primary-color);
+    margin-top: 0.5rem;
+}
+
+/* Sprite title */
+.product-card:nth-child(2) .card-title::after {
+    content: '';
+    display: block;
+    height: 3px;
+    width: 40px;
+    background-color: var(--secondary-color);
+    margin-top: 0.5rem;
+}
+
+/* Dr Pepper title */
+.product-card:nth-child(3) .card-title::after {
+    content: '';
+    display: block;
+    height: 3px;
+    width: 40px;
+    background-color: #8b0000;
+    margin-top: 0.5rem;
+}
+
+body.dark-mode .product-card:nth-child(1) .card-title::after {
+    background-color: var(--primary-color-bright);
+    box-shadow: 0 0 8px rgba(255,0,0,0.5);
+}
+
+body.dark-mode .product-card:nth-child(2) .card-title::after {
+    background-color: #00d36b;
+    box-shadow: 0 0 8px rgba(0,255,0,0.3);
+}
+
+body.dark-mode .product-card:nth-child(3) .card-title::after {
+    background-color: #c10000;
+    box-shadow: 0 0 8px rgba(255,0,0,0.3);
+}
+
+.product-card .card-text {
+    margin-bottom: 1rem;
+}
+
+.product-card ul {
+    margin-bottom: 1.5rem;
+}
+
+.product-card ul li {
+    margin-bottom: 0.5rem;
+}
+
+/* Card footer */
+.product-card .card-footer {
+    padding: 1rem;
+}
+
+/* ========== DARK MODE ENHANCEMENTS ========== */
+/* Improved text contrast in dark mode */
+body.dark-mode {
+    background-color: #121212;
+    color: #f0f0f0;
+}
+
+/* Make card content more visible in dark mode */
+body.dark-mode .card {
+    background-color: #282828;
+    border-color: #444;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+/* Enhance card content visibility */
+body.dark-mode .card-body {
+    background-color: #333;
+}
+
+body.dark-mode .card-title {
+    color: #fff;
+}
+
+body.dark-mode .card-text {
+    color: #ddd;
+}
+
+/* Enhanced model container in dark mode */
+body.dark-mode .model-container {
+    background-color: #1a1a1a;
+    border: 1px solid #444;
+}
+
+/* Make buttons more visible in dark mode */
+body.dark-mode .btn-outline-primary {
+    color: #f8f9fa;
+    border-color: #606060;
+}
+
+body.dark-mode .btn-outline-primary:hover {
+    background-color: rgba(255,255,255,0.1);
+    border-color: var(--primary-color-bright);
+}
+
+body.dark-mode .btn-outline-secondary {
+    color: #f8f9fa;
+    border-color: #606060;
+}
+
+body.dark-mode .btn-outline-secondary:hover {
+    background-color: rgba(255,255,255,0.1);
+}
+
+body.dark-mode .btn-outline-secondary.active {
+    background-color: #444;
+    color: #fff;
+}
+
+/* Primary button in dark mode */
+body.dark-mode .btn-primary {
+    background-color: var(--primary-color-bright);
+    border-color: var(--primary-color);
+}
+
+body.dark-mode .btn-primary:hover {
+    background-color: #c00000;
+    border-color: #800000;
+}
+
+/* Model tab styling for dark mode */
+body.dark-mode .model-tab-btn {
+    color: #ccc;
+}
+
+body.dark-mode .model-tab-btn:hover {
+    background-color: rgba(255,255,255,0.05);
+}
+
+body.dark-mode .model-tab-btn.active {
+    background-color: #333;
+    border-color: #555;
+    border-bottom-color: #333;
+    color: #fff;
+}
+
+/* Features list for dark mode */
+body.dark-mode #model-features li {
+    color: #ddd;
+}
+
+body.dark-mode .list-unstyled li {
+    color: #ddd;
+}
+
+/* Alert/info boxes in dark mode */
+body.dark-mode .alert-info {
+    background-color: #1c3147;
+    color: #9ecdf4;
+    border-color: #2a4e74;
+}
+
+/* Check circles in dark mode */
+body.dark-mode .fa-check-circle.text-success {
+    color: #00d36b !important;
+}
+
+/* Navbar styling in dark mode */
+body.dark-mode .navbar {
+    background-color: #1a1a1a !important;
+    border-bottom: 1px solid #333;
+}
+
+body.dark-mode .navbar-light .navbar-nav .nav-link {
+    color: #ddd;
+}
+
+body.dark-mode .navbar-light .navbar-nav .nav-link:hover,
+body.dark-mode .navbar-light .navbar-nav .nav-link:focus {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: var(--border-radius);
+}
+
+body.dark-mode .navbar-light .navbar-nav .nav-link.active {
+    color: var(--primary-color-bright);
+}
+
+/* Active item in dark mode navbar */
+body.dark-mode .navbar-nav .nav-item.active .nav-link,
+body.dark-mode .navbar-nav .nav-item:hover .nav-link {
+    color: var(--primary-color-bright);
+}
+
+/* Dark mode range sliders */
+body.dark-mode input[type="range"] {
+    background: #444;
+    border: 1px solid #555;
+}
+
+body.dark-mode .form-label {
+    color: #ddd;
+}
+
+/* Dropdown in dark mode */
+body.dark-mode .dropdown-menu {
+    background-color: #282828;
+    border-color: #444;
+}
+
+body.dark-mode .dropdown-item {
+    color: #ddd;
+}
+
+body.dark-mode .dropdown-item:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+/* ========== MODEL TABS STYLES ========== */
+/* Tabs container */
+.model-tabs {
+    position: relative;
+    z-index: 1;
+    margin-bottom: -1px;
+}
+
+/* Tab buttons */
+.model-tab-btn {
+    position: relative;
+    padding: 0.75rem 1.5rem;
+    margin-right: 0.5rem;
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+    font-weight: 600;
+    transition: all var(--transition-speed) ease;
+    border: 1px solid transparent;
+    background: transparent;
+    cursor: pointer;
+}
+
+/* Light mode tab styles */
+body.light-mode .model-tab-btn {
+    color: var(--light-text);
+}
+
+body.light-mode .model-tab-btn:hover:not(.active) {
+    background-color: rgba(0,0,0,0.03);
+    border-color: #eee;
+}
+
+body.light-mode .model-tab-btn.active {
+    background-color: var(--light-card-bg);
+    border-color: var(--light-card-border);
+    border-bottom-color: var(--light-card-bg);
+}
+
+/* Dark mode tab styles */
+body.dark-mode .model-tab-btn {
+    color: #ccc;
+}
+
+body.dark-mode .model-tab-btn:hover {
+    background-color: rgba(255,255,255,0.05);
+}
+
+body.dark-mode .model-tab-btn.active {
+    background-color: #333;
+    border-color: #555;
+    border-bottom-color: #333;
+    color: #fff;
+}
+
+/* Brand icon styles */
+.brand-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 8px;
+}
+
+.brand-icon.coke {
+    background-color: #F40009;
+}
+
+.brand-icon.sprite {
+    background-color: #00892d;
+}
+
+.brand-icon.drpepper {
+    background-color: #8b0000;
+}
+
+/* In dark mode, make the icons glow slightly */
+body.dark-mode .brand-icon.coke {
+    box-shadow: 0 0 8px rgba(255,0,0,0.5);
+}
+
+body.dark-mode .brand-icon.sprite {
+    box-shadow: 0 0 8px rgba(0,255,0,0.3);
+}
+
+body.dark-mode .brand-icon.drpepper {
+    box-shadow: 0 0 8px rgba(139,0,0,0.5);
+}
+
+/* ========== PRODUCT CARD STYLES ========== */
+.product-card {
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    overflow: hidden;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Light mode product cards */
+body.light-mode .product-card {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+body.light-mode .product-card:hover {
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+/* Dark mode product cards */
+body.dark-mode .product-card {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    background-color: var(--dark-card-bg);
+    border-color: var(--dark-card-border);
+}
+
+body.dark-mode .product-card:hover {
+    box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+}
+
+/* Product card image styles */
+.card-img-container {
+    overflow: hidden;
+    max-height: 220px;
+}
+
+.product-card img {
+    transition: transform 0.5s ease;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.product-card:hover img {
+    transform: scale(1.05);
+}
+
+/* Card title */
+.product-card .card-title {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+/* Coca-Cola title */
+.product-card:nth-child(1) .card-title::after {
+    content: '';
+    display: block;
+    height: 3px;
+    width: 40px;
+    background-color: var(--primary-color);
+    margin-top: 0.5rem;
+}
+
+/* Sprite title */
+.product-card:nth-child(2) .card-title::after {
+    content: '';
+    display: block;
+    height: 3px;
+    width: 40px;
+    background-color: var(--secondary-color);
+    margin-top: 0.5rem;
+}
+
+/* Dr Pepper title */
+.product-card:nth-child(3) .card-title::after {
+    content: '';
+    display: block;
+    height: 3px;
+    width: 40px;
+    background-color: #8b0000;
+    margin-top: 0.5rem;
+}
+
+body.dark-mode .product-card:nth-child(1) .card-title::after {
+    background-color: var(--primary-color-bright);
+    box-shadow: 0 0 8px rgba(255,0,0,0.5);
+}
+
+body.dark-mode .product-card:nth-child(2) .card-title::after {
+    background-color: #00d36b;
+    box-shadow: 0 0 8px rgba(0,255,0,0.3);
+}
+
+body.dark-mode .product-card:nth-child(3) .card-title::after {
+    background-color: #c10000;
+    box-shadow: 0 0 8px rgba(255,0,0,0.3);
+}
+
+.product-card .card-text {
+    margin-bottom: 1rem;
+}
+
+.product-card ul {
+    margin-bottom: 1.5rem;
+}
+
+.product-card ul li {
+    margin-bottom: 0.5rem;
+}
+
+/* Card footer */
+.product-card .card-footer {
+    padding: 1rem;
+}
+
+/* 3D model container specific dark mode styles */
+body.dark-mode .model-container canvas {
+    background-color: #1a1a1a;
+}
+
+/* Model controls in dark mode */
+body.dark-mode .model-controls {
+    background-color: transparent;
+}
+
+/* Camera controls in dark mode */
+body.dark-mode .camera-controls .btn {
+    color: #eee;
+    border-color: #555;
+}
+
+body.dark-mode .camera-controls .btn.active {
+    background-color: #444;
+    color: #fff;
+    border-color: #666;
+}
+
+body.dark-mode .camera-controls .btn:hover:not(.active) {
+    background-color: rgba(255,255,255,0.1);
+}
+
+/* Model wireframe and rotation buttons in dark mode */
+body.dark-mode #wireframe-btn,
+body.dark-mode #rotate-btn {
+    color: #eee;
+    border-color: #555;
+}
+
+body.dark-mode #wireframe-btn:hover,
+body.dark-mode #rotate-btn:hover {
+    background-color: rgba(255,255,255,0.1);
+    color: #fff;
+}
+
+/* Specific styles for the model info section */
+body.dark-mode #model-title {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255,255,255,0.2);
+}
+
+body.dark-mode #model-description {
+    color: #ddd;
+}
+
+/* Pro tip box in dark mode */
+body.dark-mode .alert-info {
+    background-color: #1c3147;
+    border-color: #2a4e74;
+    color: #9ecdf4;
+}
+
+/* Fix for Features heading in dark mode */
+body.dark-mode h3.h5,
+body.dark-mode .h5,
+body.dark-mode .features {
+    color: #f8f9fa;
+    font-weight: 600;
+    text-shadow: 0 0 10px rgba(255,255,255,0.15);
+}
+
+/* Fix for explore text paragraph in dark mode */
+body.dark-mode .model-container + p,
+body.dark-mode .model-info p:not(.lead),
+body.dark-mode .card-body p:not(.card-text) {
+    color: #b8b8b8;
+}
+
+/* Ensure all list items are visible in dark mode */
+body.dark-mode li,
+body.dark-mode ul li,
+body.dark-mode ol li {
+    color: #ddd;
+}
+
+/* Make all model description text properly visible */
+body.dark-mode #model-description,
+body.dark-mode .model-description,
+body.dark-mode p.lead {
+    color: #b8b8b8;
+}
+
+/* Improve feature heading with underline in dark mode */
+body.dark-mode h3.h5:after,
+body.dark-mode .features:after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 2px;
+    background-color: #ff3030;
+    margin-top: 8px;
+    margin-bottom: 16px;
+    box-shadow: 0 0 8px rgba(255, 0, 0, 0.5);
+}
+
+/* Enhanced styling for Features heading and descriptions */
+.features {
+    position: relative;
+    margin-top: 2rem;
+    font-weight: 600;
+}
+
+body.light-mode .features {
+    color: #333;
+}
+
+body.dark-mode .features {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+/* Style for the model info paragraph */
+.model-info {
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+body.light-mode .model-info {
+    color: #555;
+}
+
+body.dark-mode .model-info {
+    color: #c0c0c0;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* ========== ANIMATION CONTROLS ========== */
+.animation-controls, .background-controls, .environment-controls {
+    background-color: rgba(0, 0, 0, 0.03);
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+body.dark-mode .animation-controls,
+body.dark-mode .background-controls,
+body.dark-mode .environment-controls {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.animation-controls h6,
+.background-controls h6,
+.environment-controls h6 {
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: inherit;
+}
+
+.bg-color-btn {
+    position: relative;
+    width: 100px;
+}
+
+.bg-color-btn[data-color="#f0f0f0"]::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+}
+
+.bg-color-btn[data-color="#111111"]::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    background-color: #111111;
+    border: 1px solid #333;
+    border-radius: 50%;
+}
+
+.bg-color-btn[data-color="transparent"]::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    background: linear-gradient(45deg, #fff 0%, #fff 50%, transparent 50%, transparent 100%);
+    border: 1px solid #ccc;
+    border-radius: 50%;
+}
+
+/* Active state for background color buttons */
+.bg-color-btn.active {
+    background-color: rgba(0, 123, 255, 0.1);
+    border-color: rgba(0, 123, 255, 0.5);
+}
+
+body.dark-mode .bg-color-btn.active {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Environment dropdown styling */
+#hdri-environment {
+    background-color: transparent;
+    border-color: #ced4da;
+    transition: all 0.2s ease;
+}
+
+body.dark-mode #hdri-environment {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-color: #444;
+    color: #eee;
+}
+
+/* Animation in progress indicator */
+.animation-active {
+    color: #28a745;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.7;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.7;
+    }
+}
+
+/* Custom color picker styles */
+#custom-bg-color {
+    width: 40px;
+    height: 30px;
+    padding: 0;
+    border: 1px solid #ced4da;
+    cursor: pointer;
+}
+
+#apply-custom-bg {
+    margin-left: 8px;
+    font-size: 0.75rem;
+    padding: 4px 8px;
+}
+
+/* Dark mode adjustments for color picker */
+body.dark-mode #custom-bg-color {
+    border-color: #555;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode #apply-custom-bg {
+    color: #eee;
+    border-color: #666;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode #apply-custom-bg:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Environment description */
+.environment-description {
+    padding: 0.5rem;
+    background-color: rgba(0, 0, 0, 0.03);
+    border-radius: var(--border-radius);
+    font-style: italic;
+}
+
+body.dark-mode .environment-description {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #aaa;
+}
+
+/* Toast notifications */
+.toast-container {
+    z-index: 1100;
+}
+
+.toast {
+    min-width: 250px;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+body.light-mode .toast {
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode .toast {
+    background-color: rgba(40, 40, 40, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #f0f0f0;
+}
+
+body.dark-mode .toast-header {
+    background-color: rgba(60, 60, 60, 0.9);
+    color: #f0f0f0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .btn-close {
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+/* ========== FLOATING CONTROLS ========== */
+.controls-toggle {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 100;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 0;
+    color: #fff;
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.controls-toggle:hover {
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+}
+
+.floating-controls {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 280px;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    z-index: 99;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    display: block;
+    visibility: visible;
+}
+
+.floating-controls.hidden {
+    transform: scale(0.9);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.controls-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.controls-header h6 {
+    margin: 0;
+    font-weight: 600;
+}
+
+.controls-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#reset-all-btn {
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    background-color: #f1f1f1;
+    border: 1px solid #dee2e6;
+}
+
+#reset-all-btn:hover {
+    background-color: #e2e6ea;
+}
+
+.control-section {
+    padding: 15px;
+}
+
+/* Tab styling */
+.floating-controls .nav-tabs {
+    border-bottom: 1px solid #dee2e6;
+    background-color: #f8f9fa;
+}
+
+.floating-controls .nav-tabs .nav-link {
+    padding: 8px 5px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #495057;
+    border: 1px solid transparent;
+}
+
+.floating-controls .nav-tabs .nav-link.active {
+    color: #007bff;
+    border-color: #dee2e6 #dee2e6 #fff;
+    background-color: #fff;
+}
+
+.floating-controls .tab-content {
+    max-height: 300px;
+    overflow-y: auto;
+    background-color: #fff;
+}
+
+/* Color grid for background colors */
+.color-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+    margin-top: 5px;
+}
+
+.color-swatch {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 4px;
+    border: 1px solid #dee2e6;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    position: relative;
+}
+
+.color-swatch:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.color-swatch.active {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 2px #007bff;
+}
+
+.color-swatch.transparent {
+    background-image: linear-gradient(45deg, #ccc 25%, transparent 25%, transparent 75%, #ccc 75%, #ccc),
+                     linear-gradient(45deg, #ccc 25%, transparent 25%, transparent 75%, #ccc 75%, #ccc);
+    background-size: 10px 10px;
+    background-position: 0 0, 5px 5px;
+}
+
+/* Custom color picker */
+.custom-color-picker {
+    margin-top: 8px;
+}
+
+#custom-bg-color {
+    width: 40px;
+    height: 30px;
+    padding: 0;
+    border: 1px solid #ced4da;
+    cursor: pointer;
+}
+
+/* Environment description */
+.environment-description {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: #555;
+    padding: 8px;
+    border-radius: 4px;
+    border-left: 3px solid rgba(0, 0, 0, 0.1);
+    font-size: 0.85rem;
+    margin-top: 10px;
+}
+
+/* Dark mode styles for floating controls */
+body.dark-mode .floating-controls {
+    background-color: rgba(40, 40, 40, 0.95);
+    border: 1px solid #444;
+}
+
+body.dark-mode .controls-header {
+    background-color: #333;
+    border-bottom: 1px solid #444;
+}
+
+body.dark-mode .controls-header h6 {
+    color: #f0f0f0;
+}
+
+body.dark-mode .controls-toggle {
+    background-color: #444;
+    color: #f0f0f0;
+    border-color: #555;
+}
+
+body.dark-mode .controls-toggle:hover {
+    background-color: #555;
+    border-color: #666;
+}
+
+body.dark-mode #reset-all-btn {
+    background-color: rgba(220, 53, 69, 0.1);
+    color: #ff6b6b;
+    border-color: rgba(220, 53, 69, 0.3);
+}
+
+body.dark-mode #reset-all-btn:hover {
+    background-color: rgba(220, 53, 69, 0.2);
+    border-color: rgba(220, 53, 69, 0.4);
+}
+
+body.dark-mode .floating-controls .nav-tabs {
+    background-color: #333;
+    border-bottom: 1px solid #444;
+}
+
+body.dark-mode .floating-controls .nav-tabs .nav-link {
+    color: #ccc;
+}
+
+body.dark-mode .floating-controls .nav-tabs .nav-link.active {
+    color: #3f99ff;
+    background-color: #383838;
+    border-color: #444 #444 #383838;
+}
+
+body.dark-mode .floating-controls .tab-content {
+    background-color: #383838;
+    color: #fff;
+}
+
+body.dark-mode .color-swatch {
+    border-color: #555;
+}
+
+body.dark-mode .color-swatch.active {
+    box-shadow: 0 0 0 2px #3f99ff;
+}
+
+body.dark-mode .form-label {
+    color: #ddd;
+}
+
+body.dark-mode .environment-description {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ddd;
+    border-left: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Make the model container position relative for absolute positioning of controls */
+.model-container {
+    position: relative;
+    overflow: visible;
+}
+
+/* Controls header styling */
+.controls-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.controls-actions {
+    display: flex;
+    align-items: center;
+}
+
+#reset-all-btn {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
+
+body.dark-mode #reset-all-btn {
+    color: #eee;
+    border-color: #666;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode #reset-all-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Dark mode environment description - improved visibility */
+body.dark-mode .environment-description {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ddd;
+    padding: 8px;
+    border-radius: 4px;
+    border-left: 3px solid rgba(255, 255, 255, 0.3);
+    font-weight: 400;
+}
+
+/* ========== SIDEBAR CONTROLS ========== */
+.model-container {
+    position: relative;
+    overflow: visible;
+}
+
+/* Sidebar panel - floating design */
+.sidebar-controls {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 320px;
+    z-index: 100;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Toggle button - fixed position relative to viewport */
+.sidebar-toggle {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 0;
+    color: #fff;
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    z-index: 102; /* Higher than the panel */
+    transition: all 0.3s ease;
+}
+
+/* Sidebar content wrapper */
+.sidebar-content {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 320px;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    max-height: 100%;
+    border-radius: 0 0 0 8px;
+    backdrop-filter: blur(5px);
+}
+
+/* Dark mode adjustments */
+body.dark-mode .sidebar-content {
+    background-color: rgba(40, 40, 40, 0.95);
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .sidebar-header {
+    background-color: #333;
+    border-bottom: 1px solid #444;
+}
+
+/* Sidebar header */
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.sidebar-header h6 {
+    margin: 0;
+    font-weight: 600;
+}
+
+/* Control sections */
+.control-section {
+    padding: 15px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+    margin: 0 0 10px 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #495057;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Collapsible section title */
+.section-title.collapsible {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.section-title.collapsible:hover {
+    color: #0d6efd;
+}
+
+/* Camera buttons grid */
+.camera-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+}
+
+.camera-btn {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    color: #495057;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.camera-btn:hover {
+    background-color: #e9ecef;
+    color: #212529;
+}
+
+.camera-btn.active {
+    background-color: #0d6efd;
+    color: white;
+    border-color: #0d6efd;
+}
+
+/* Color grid for background colors */
+.color-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+}
+
+.color-swatch {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 4px;
+    border: 1px solid #dee2e6;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    position: relative;
+}
+
+.color-swatch:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.color-swatch.active {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 2px #007bff;
+}
+
+.color-swatch.transparent {
+    background-image: linear-gradient(45deg, #ccc 25%, transparent 25%, transparent 75%, #ccc 75%, #ccc),
+                     linear-gradient(45deg, #ccc 25%, transparent 25%, transparent 75%, #ccc 75%, #ccc);
+    background-size: 10px 10px;
+    background-position: 0 0, 5px 5px;
+}
+
+/* Custom color picker */
+.custom-color-picker {
+    margin-top: 8px;
+}
+
+#custom-bg-color {
+    width: 40px;
+    height: 30px;
+    padding: 0;
+    border: 1px solid #ced4da;
+    cursor: pointer;
+}
+
+/* Environment description */
+.environment-description {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: #555;
+    padding: 8px;
+    border-radius: 4px;
+    border-left: 3px solid rgba(0, 0, 0, 0.1);
+    font-size: 0.85rem;
+    margin-top: 10px;
+}
+
+body.dark-mode .environment-description {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ddd;
+    border-left: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Reset controls at bottom */
+.reset-controls {
+    margin-top: auto;
+    border-bottom: none;
+}
+
+/* Dark mode styles for sidebar */
+body.dark-mode .sidebar-content {
+    background-color: rgba(40, 40, 40, 0.95);
+    border-left: 1px solid #444;
+}
+
+body.dark-mode .sidebar-header {
+    background-color: #333;
+    border-bottom: 1px solid #444;
+}
+
+body.dark-mode .sidebar-header h6 {
+    color: #f0f0f0;
+}
+
+body.dark-mode .section-title {
+    color: #e0e0e0;
+}
+
+body.dark-mode .section-title.collapsible:hover {
+    color: #6ea8fe;
+}
+
+body.dark-mode .control-section {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .camera-btn {
+    background-color: #333;
+    border-color: #444;
+    color: #ddd;
+}
+
+body.dark-mode .camera-btn:hover {
+    background-color: #444;
+    color: #fff;
+}
+
+body.dark-mode .camera-btn.active {
+    background-color: #0d6efd;
+    color: #fff;
+    border-color: #0a58ca;
+}
+
+body.dark-mode form-label {
+    color: #ddd;
+}
+
+body.dark-mode .environment-description {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+/* Make sidebar content scrollable on small screens */
+@media (max-height: 700px) {
+    .sidebar-content {
+        overflow-y: auto;
+    }
+    
+    .control-section {
+        padding: 10px 15px;
+    }
+    
+    .section-title {
+        margin-bottom: 8px;
+    }
+}
+
+/* Animation active state */
+.btn.animation-active {
+    animation: pulse 1.5s;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Fullscreen mode enhancements */
+.model-container:-webkit-full-screen {
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+}
+
+.model-container:-moz-full-screen {
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+}
+
+.model-container:fullscreen {
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+}
+
+/* Adjust sidebar in fullscreen */
+.model-container:fullscreen .sidebar-controls {
+    height: 100vh;
+}
+
+/* Enhance visibility of sidebar toggle in fullscreen */
+.model-container:fullscreen .sidebar-toggle,
+.model-container:fullscreen .fullscreen-toggle {
+    background-color: rgba(13, 110, 253, 0.8);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Safari fallback */
+.model-container.is-fullscreen .sidebar-controls {
+    height: 100vh;
+}
+
+/* Model Interaction Buttons */
+.model-interaction-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px;
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.model-interaction-buttons .btn-model-control {
+    padding: 8px 12px;
+    background-color: white;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    min-width: 80px;
+    text-align: center;
+}
+
+.model-interaction-buttons .btn-model-control:hover {
+    background-color: #f8f9fa;
+    border-color: #aaa;
+    transform: translateY(-2px);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.15);
+}
+
+.model-interaction-buttons .btn-model-control:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Special styling for camera buttons */
+.model-interaction-buttons .camera-btn {
+    background-color: #e9f0ff;
+    border-color: #c5d5f2;
+}
+
+.model-interaction-buttons .camera-btn:hover {
+    background-color: #d8e5ff;
+}
+
+.model-interaction-buttons .camera-btn.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #0069d9;
+}
+
+/* Function-specific button colors */
+.model-interaction-buttons #wireframe-toggle {
+    background-color: #f5f5f5;
+}
+
+.model-interaction-buttons #rotation-toggle {
+    background-color: #f0f7ff;
+}
+
+.model-interaction-buttons #reset-model {
+    background-color: #fff5f5;
+}
+
+.model-interaction-buttons #open-can {
+    background-color: #f2fff5;
+}
+
+.model-interaction-buttons #crush-can {
+    background-color: #fff0f0;
+}
+
+/* Dark mode adjustments */
+body.dark-mode .model-interaction-buttons {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+body.dark-mode .model-interaction-buttons .btn-model-control {
+    background-color: #333;
+    color: #eee;
+    border-color: #555;
+}
+
+body.dark-mode .model-interaction-buttons .btn-model-control:hover {
+    background-color: #444;
+    border-color: #666;
+}
+
+body.dark-mode .model-interaction-buttons .camera-btn {
+    background-color: #2a3a5a;
+    border-color: #3a4a6a;
+}
+
+body.dark-mode .model-interaction-buttons .camera-btn:hover {
+    background-color: #314367;
+}
+
+body.dark-mode .model-interaction-buttons .camera-btn.active {
+    background-color: #0d6efd;
+    color: white;
+    border-color: #0a58ca;
+}
+
+/* Model Interaction Panel - Fixed below model viewer */
+.model-interaction-panel {
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode .model-interaction-panel {
+    background-color: #282828;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Function button styling */
+.interaction-btn {
+    text-align: center;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    height: 100%;
+}
+
+.interaction-btn:hover {
+    background-color: #f8f9fa;
+    transform: translateY(-2px);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.interaction-btn.active {
+    background-color: #e7f1ff;
+    border-color: #b8daff;
+    color: #0069d9;
+}
+
+body.dark-mode .interaction-btn {
+    background-color: #333;
+    border-color: #444;
+    color: #eee;
+}
+
+body.dark-mode .interaction-btn:hover {
+    background-color: #3a3a3a;
+    border-color: #555;
+}
+
+body.dark-mode .interaction-btn.active {
+    background-color: #2a3a5a;
+    border-color: #3a4a6a;
+    color: #8abaff;
+}
+
+/* Speed slider styling */
+.speed-control .form-range {
+    height: 8px;
+}
+
+.speed-control .form-range::-webkit-slider-thumb {
+    background-color: #007bff;
+}
+
+.speed-control .form-range::-moz-range-thumb {
+    background-color: #007bff;
+}
+
+body.dark-mode .speed-control .form-range::-webkit-slider-thumb {
+    background-color: #0d6efd;
+}
+
+body.dark-mode .speed-control .form-range::-moz-range-thumb {
+    background-color: #0d6efd;
+}
+
+body.dark-mode .speed-control .small.text-muted {
+    color: #aaa !important;
+}
+
+/* Camera angle buttons */
+.camera-angle-btn {
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    height: 100%;
+}
+
+.camera-angle-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode .btn-light.camera-angle-btn {
+    background-color: #333;
+    border-color: #444;
+    color: #eee;
+}
+
+body.dark-mode .btn-light.camera-angle-btn:hover {
+    background-color: #3a3a3a;
+    border-color: #555;
+}
+
+body.dark-mode .btn-primary.camera-angle-btn {
+    background-color: #0d6efd;
+    border-color: #0a58ca;
+}
+
+/* Animation buttons */
+.animation-control-buttons .btn {
+    transition: all 0.2s ease;
+    border-radius: 6px;
+    height: 100%;
+}
+
+.animation-control-buttons .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode .animation-control-buttons .btn {
+    border-color: #444;
+}
+
+/* Ensure all buttons have consistent height */
+.model-interaction-panel .row {
+    --bs-gutter-x: 0.5rem;
+}
+
+.model-interaction-panel .btn {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+/* Rotating icon animation for rotation button */
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.interaction-btn.active .fa-sync-alt {
+    animation: rotate 2s linear infinite;
+}
+
+/* Keep the button from moving while icon rotates */
+.interaction-btn .fa-sync-alt {
+    display: inline-block;
+}
+
+/* Fullscreen toggle button */
+.fullscreen-toggle {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 0;
+    z-index: 101;
+}
+
+/* ========== FLOATING CONTROL BUTTON ========== */
+.model-container {
+    position: relative;
+    overflow: visible;
+}
+
+/* Floating control button */
+.floating-control-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+    padding: 0;
+    color: #fff;
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    z-index: 102;
+    transition: all 0.2s ease-in-out;
+}
+
+.floating-control-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.floating-control-btn:active {
+    transform: scale(0.95);
+}
+
+/* Fullscreen button */
+.fullscreen-toggle {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 0;
+    z-index: 101;
+}
+
+/* Control sections in modal */
+.control-section {
+    padding: 15px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+    margin: 0 0 10px 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #495057;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Camera buttons grid */
+.camera-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+}
+
+.camera-btn {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    color: #495057;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.camera-btn:hover {
+    background-color: #e9ecef;
+    color: #212529;
+}
+
+.camera-btn.active {
+    background-color: #0d6efd;
+    color: white;
+    border-color: #0d6efd;
+}
+
+/* Color grid for background colors */
+.color-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+}
+
+.color-swatch {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 4px;
+    border: 1px solid #dee2e6;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    position: relative;
+}
+
+.color-swatch:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.color-swatch.active {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 2px #007bff;
+}
+
+.color-swatch.transparent {
+    background-image: linear-gradient(45deg, #ccc 25%, transparent 25%, transparent 75%, #ccc 75%, #ccc),
+                     linear-gradient(45deg, #ccc 25%, transparent 25%, transparent 75%, #ccc 75%, #ccc);
+    background-size: 10px 10px;
+    background-position: 0 0, 5px 5px;
+}
+
+/* Custom color picker */
+.custom-color-picker {
+    margin-top: 8px;
+}
+
+#custom-bg-color {
+    width: 40px;
+    height: 30px;
+    padding: 0;
+    border: 1px solid #ced4da;
+    cursor: pointer;
+}
+
+/* Environment description */
+.environment-description {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: #555;
+    padding: 8px;
+    border-radius: 4px;
+    border-left: 3px solid rgba(0, 0, 0, 0.1);
+    font-size: 0.85rem;
+    margin-top: 10px;
+}
+
+body.dark-mode .environment-description {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ddd;
+    border-left: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Reset controls at bottom */
+.reset-controls {
+    margin-top: auto;
+    border-bottom: none;
+}
+
+/* Dark mode styles for sidebar */
+body.dark-mode .sidebar-content {
+    background-color: rgba(40, 40, 40, 0.95);
+    border-left: 1px solid #444;
+}
+
+body.dark-mode .sidebar-header {
+    background-color: #333;
+    border-bottom: 1px solid #444;
+}
+
+body.dark-mode .sidebar-header h6 {
+    color: #f0f0f0;
+}
+
+body.dark-mode .section-title {
+    color: #e0e0e0;
+}
+
+body.dark-mode .section-title.collapsible:hover {
+    color: #6ea8fe;
+}
+
+body.dark-mode .control-section {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .camera-btn {
+    background-color: #333;
+    border-color: #444;
+    color: #ddd;
+}
+
+body.dark-mode .camera-btn:hover {
+    background-color: #444;
+    color: #fff;
+}
+
+body.dark-mode .camera-btn.active {
+    background-color: #0d6efd;
+    color: #fff;
+    border-color: #0a58ca;
+}
+
+body.dark-mode form-label {
+    color: #ddd;
+}
+
+body.dark-mode .environment-description {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+/* Make sidebar content scrollable on small screens */
+@media (max-height: 700px) {
+    .sidebar-content {
+        overflow-y: auto;
+    }
+    
+    .control-section {
+        padding: 10px 15px;
+    }
+    
+    .section-title {
+        margin-bottom: 8px;
+    }
+}
+
+/* Animation active state */
+.btn.animation-active {
+    animation: pulse 1.5s;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Fullscreen mode enhancements */
+.model-container:-webkit-full-screen {
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+}
+
+.model-container:-moz-full-screen {
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+}
+
+.model-container:fullscreen {
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+}
+
+/* Adjust sidebar in fullscreen */
+.model-container:fullscreen .sidebar-controls {
+    height: 100vh;
+}
+
+/* Enhance visibility of sidebar toggle in fullscreen */
+.model-container:fullscreen .sidebar-toggle,
+.model-container:fullscreen .fullscreen-toggle {
+    background-color: rgba(13, 110, 253, 0.8);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Dark Mode Specific Styles */
+body.dark-mode {
+    background-color: #121212;
+    color: #f0f0f0;
+}
+
+/* Fix for text-muted visibility in dark mode */
+body.dark-mode .text-muted,
+body.dark-mode .small.text-muted,
+body.dark-mode .speed-control .small.text-muted,
+body.dark-mode .lighting-controls .small.text-muted {
+    color: #d0d0d0 !important; /* Light gray color for dark mode */
+}
+
+/* Make form ranges more visible in dark mode */
+body.dark-mode .form-range::-webkit-slider-thumb {
+    background-color: #0d6efd; /* Bootstrap primary color */
+}
+
+body.dark-mode .form-range::-moz-range-thumb {
+    background-color: #0d6efd; /* Bootstrap primary color */
+}
+
+/* Background color controls for main view */
+.background-controls .color-swatch {
+    height: 28px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    position: relative;
+}
+
+/* Ensure light color swatch is visible in light mode */
+.background-controls .color-swatch[data-color="#f0f0f0"] {
+    border: 1px solid #ccc;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05);
+}
+
+.background-controls .color-swatch:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.background-controls .color-swatch.active {
+    border-color: #0d6efd;
+    box-shadow: 0 0 5px rgba(13, 110, 253, 0.5);
+}
+
+/* Dark mode adjustments for color swatches */
+body.dark-mode .background-controls .color-swatch {
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+body.dark-mode .background-controls .color-swatch[data-color="#f0f0f0"] {
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+body.dark-mode .background-controls .color-swatch.active {
+    border-color: #0d6efd;
+    box-shadow: 0 0 8px rgba(13, 110, 253, 0.7);
+}
+
+body.dark-mode .background-controls .color-swatch.transparent {
+    background-image: linear-gradient(45deg, #444 25%, transparent 25%, transparent 75%, #444 75%, #444),
+                     linear-gradient(45deg, #444 25%, transparent 25%, transparent 75%, #444 75%, #444);
+}
+
+.background-controls .color-swatch.active {
+    border-color: #0d6efd;
+    box-shadow: 0 0 5px rgba(13, 110, 253, 0.5);
+}
+
+.background-controls .color-swatch.transparent {
+    background-image: linear-gradient(45deg, #ccc 25%, transparent 25%, transparent 75%, #ccc 75%, #ccc),
+                     linear-gradient(45deg, #ccc 25%, transparent 25%, transparent 75%, #ccc 75%, #ccc);
+    background-size: 10px 10px;
+    background-position: 0 0, 5px 5px;
+}
+
+/* Color picker styling */
+#dynamic-bg-color {
+    height: 28px;
+    min-width: 28px;
+    padding: 0;
+    cursor: pointer;
+    border-radius: 4px;
+    border: 1px solid #ced4da;
+}
+
+/* Enhanced color picker container */
+.color-picker-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.color-picker-container:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.color-picker-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(to right, red, yellow, lime, cyan, blue, magenta);
+    opacity: 0.8;
+    z-index: 2;
+}
+
+.color-picker-container #dynamic-bg-color {
+    height: 28px;
+    width: 100%;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+}
+
+/* Dark mode adjustments for color swatches */
+body.dark-mode .background-controls .color-swatch.transparent {
+    background-image: linear-gradient(45deg, #444 25%, transparent 25%, transparent 75%, #444 75%, #444),
+                     linear-gradient(45deg, #444 25%, transparent 25%, transparent 75%, #444 75%, #444);
+}
+
+body.dark-mode .color-picker-container {
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
+}
+
+body.dark-mode .color-picker-container:hover {
+    box-shadow: 0 3px 8px rgba(255, 255, 255, 0.15);
+}
+
+body.dark-mode #dynamic-bg-color {
+    border-color: #444;
+    background-color: #333;
+}
